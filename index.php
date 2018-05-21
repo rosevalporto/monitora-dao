@@ -55,24 +55,20 @@
 </html>
 
 
-
-
-
-
 <?php
 require_once("database.php");
 require_once("Sql.php");
 
-$sql=new Sql();
+//$q = ((new Sql())->connect())->query("select top 1 * from atendim")->fetchAll();
+$q = ((new Sql())->connect())->query("select top 1 * from atendim");
+$sql = ($q->fetch());
 
-if( $sql ) {
-     echo "Connection established.<br />";
+var_dump ($sql);
+if( $q ) {
+	 echo "Connection established.<br />";
 }else{
      echo "Connection could not be established.<br />";
      die( print_r( sqlsrv_errors(), true));
 }
 
 ?>
-	
-
-
